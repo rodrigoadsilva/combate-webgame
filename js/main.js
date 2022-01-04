@@ -1,4 +1,4 @@
-cards = [
+const cards = [
     {
         tipo: "Agente",
         forca: 1,
@@ -56,12 +56,39 @@ cards = [
     }
 ]
 
-function deckMount(cards){
-    for(var i=0 ; i<45 ; i++){
-        for(var n=0 ; n<cards[i].qtd ; n++){
-            deck.push(cards[i].tipo);
+function deckMount(){
+    for(var i=0 ; i<11 ; i++){
+        let count = cards[i].qtd;
+        for(let n=0 ; n<count ; n++){
+            deck1.push(cards[i].tipo);
+            deck2.push(cards[i].tipo);
         }        
     }
 }
 
-let deck = []
+function shuffle(deck) {
+    let currentIndex = deck.length,  randomIndex;
+  
+    // While there remain elements to shuffle...
+    while (currentIndex != 0) {
+  
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+  
+      // And swap it with the current element.
+      [deck[currentIndex], deck[randomIndex]] = [
+        deck[randomIndex], deck[currentIndex]];
+    }
+  
+    return deck;
+}
+
+function cutDeck(deck){
+    
+}
+
+let deck1 = [];
+let deck2 = [];
+
+deckMount();
