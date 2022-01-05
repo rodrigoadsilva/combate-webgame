@@ -102,10 +102,31 @@ deckPlayer = cutDeck(deckPlayer);
 deckMachine = cutDeck(deckMachine);
 
 let playerSeletedDeck = deckPlayer[0];
+deckPlayer.shift();
 let machineSeletedDeck =  deckMachine[Math.floor(Math.random() * 3)];
 
 function combat(deck1, deck2){
     while(deck1.length>0 && deck2.length>0){
-        
+        console.log("Luta: P-"+deck1[0].name+" contra M-"+deck2[0].name);
+        if(deck1[0].str > deck2[0].str){
+            console.log("Player vence luta");
+            deckPlayerWinners.push(deck1[0]);
+        }
+        else if(deck2[0].str > deck1[0].str){
+            console.log("Maquina vence luta")
+            deckMachineWinners.push(deck2[0]);
+        }
+        else{
+            console.log("Empate");
+        }
+        deck1.shift();
+        deck2.shift();
     }
+}
+
+function arrayRemove(arr, value) { 
+    
+    return arr.filter(function(ele){ 
+        return ele != value; 
+    });
 }
